@@ -21,9 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	
-	<context:component-scan base-package="com.banseok.persistence" />
-	<context:component-scan base-package="com.banseok.service" />
+
+	<!-- controller 부분은 servlet-context.xml에 추가해줘야 실행됨  -->
 	<context:component-scan base-package="com.banseok.controller" />
 	
 	
