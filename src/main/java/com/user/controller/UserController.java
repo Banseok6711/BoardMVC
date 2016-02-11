@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,12 +27,9 @@ public class UserController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET() throws Exception {
-
-		/*
-		 * BoardVO vo = new BoardVO(); vo.setTitle("test"); vo.setContent(
-		 * "content test"); vo.setWriter("test");
-		 */
-
+		
+		logger.info("register get......");
+	/*	
 		UserVO vo = new UserVO();
 		vo.setUserid("banseok");
 		vo.setUserpw("1234");
@@ -45,11 +44,30 @@ public class UserController {
 		for (int i = 0; i < list.size(); i++) {
 			logger.info("list.num :" + i + " , " + list.get(i).getUserid() + ": " + list.get(i).getUsername());
 
-		}
+		}*/
+		
 
 	}
 	
+	@RequestMapping(value="/register" , method= RequestMethod.POST)
+	public String registerPOST(Model Model ,UserVO vo) throws Exception{
+		
+		
+		logger.info("regist post.....");
+		logger.info(vo.toString());
+		
+		service.insert(vo);
+		
+		Model.addAttribute("result", "success");
+		
+		return "user/success";
+	}	
 	
-	
+	@RequestMapping(value="/home")
+	public String home(){
+		
+		return "home";
+	}
+		
 
 }

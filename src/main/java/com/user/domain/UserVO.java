@@ -1,5 +1,7 @@
 package com.user.domain;
 
+import junit.framework.Protectable;
+
 public class UserVO {
 	
 	private String userid;
@@ -54,6 +56,25 @@ public class UserVO {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
+	
+	
+	@Override
+	public String toString() {
+		
+		String result ="";
+		
+		result = "userid:"+userid +"\n"+				
+				"userpw:"+userpw+"\n"+
+				"username:"+username+"\n"+
+				"age:"+age+"\n"+
+				"birth:"+birth+"\n"+
+				"email:"+email+"\n"+
+				"phone:"+phone+"\n";
+						
+		return result;
+	}
+	
+	
 	
 	
 
