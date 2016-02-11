@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.banseok.board">
+	<logger name="com.user.controller">
 		<level value="info" />
 	</logger>
 	

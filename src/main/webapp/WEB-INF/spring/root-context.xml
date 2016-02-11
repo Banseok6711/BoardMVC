@@ -13,7 +13,7 @@
 		
 	<bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/book_ex"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/localStore"></property>
 		<property name="username" value="study"></property>
 		<property name="password" value="study"></property>
 	</bean>	
@@ -30,7 +30,7 @@
 	</bean>
 	
 		
-	<context:component-scan base-package="com.banseok.persistence" />
-	<context:component-scan base-package="com.banseok.service" />
+	<context:component-scan base-package="com.user.persistence" />
+	<context:component-scan base-package="com.user.service" />
 
 </beans>

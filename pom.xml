@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.banseok</groupId>
 	<artifactId>board</artifactId>
-	<name>BoardMVC</name>
+	<name>LocalStore</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -162,10 +162,6 @@
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 			<version>1.16</version>
 		</dependency>
-
-
-
-
 
 
 
