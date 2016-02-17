@@ -26,14 +26,13 @@ public class UserTest {
 	public void registerTest()throws Exception{
 		
 		UserVO vo = new UserVO();
-		vo.setAge(14);
 		vo.setBirth(870311);
 		vo.setEmail("seok7811@mail.com");
 		vo.setPhone(01033331112);
 		vo.setUserid("updateid6");
 		vo.setUsername("Lee");
 		vo.setUserpw("11111");
-		
+				
 		dao.create(vo);
 						
 	}
@@ -51,7 +50,6 @@ public class UserTest {
 		UserVO vo = new UserVO();
 
 		vo.setUserid("updateid3");
-		vo.setAge(00);
 		vo.setEmail("0000@mail.com");
 		vo.setPhone(0000000);
 		vo.setUserpw("0000");

@@ -1,5 +1,7 @@
 package com.user.domain;
 
+import java.util.Date;
+
 import junit.framework.Protectable;
 
 public class UserVO {
@@ -7,10 +9,17 @@ public class UserVO {
 	private String userid;
 	private String userpw;
 	private String username;
-	private int age;
 	private String email;
 	private int birth;
 	private int phone;
+	private Date regdate;	
+	
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -32,12 +41,7 @@ public class UserVO {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -65,8 +69,7 @@ public class UserVO {
 		
 		result = "userid:"+userid +"\n"+				
 				"userpw:"+userpw+"\n"+
-				"username:"+username+"\n"+
-				"age:"+age+"\n"+
+				"username:"+username+"\n"+				
 				"birth:"+birth+"\n"+
 				"email:"+email+"\n"+
 				"phone:"+phone+"\n";

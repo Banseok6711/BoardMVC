@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -53,6 +54,7 @@ public class UserController {
 	public String registerPOST(Model Model ,UserVO vo) throws Exception{
 		
 		
+		
 		logger.info("regist post.....");
 		logger.info(vo.toString());
 		
@@ -60,14 +62,35 @@ public class UserController {
 		
 		Model.addAttribute("result", "success");
 		
-		return "user/success";
-	}	
+		return "redirect:listall";
+	}
+
 	
 	@RequestMapping(value="/home")
 	public String home(){
 		
-		return "home";
+		return "user/home";
 	}
+	
+	@RequestMapping(value="/listall")
+	public String listAll(Model model)throws Exception{
+		
+		
+		logger.info("userlist....... ");
+		
+		List<UserVO> userlist= service.listAll();
+		
+		for(int i=0;i<userlist.size();i++){
+			logger.info(userlist.get(i).getUsername()+"가입날짜:"+userlist.get(i).getRegdate());
+		}
+		
+		 
+		 model.addAttribute("userList", userlist);
+		
+		return "user/userlist";
+	}
+	
+	
 		
 
 }

@@ -1,4 +1,6 @@
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="utf-8"%>
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,14 +22,14 @@
 
 <body>
 	<!--  navbar -->	
-	<%@include file="include/navbar.jsp" %>	
+	<%@include file="../include/navbar.jsp" %>	
 	<!-- /.navbar -->
 
 	<div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 		
 			<!-- SideBar (left)  -->			
-			<%@include file="include/sidebar.jsp" %>		
+			<%@include file="../include/sidebar.jsp" %>		
 			<!-- /SideBar (left)  -->
 			
 		
@@ -53,7 +55,7 @@
 							malesuada magna mollis euismod. Donec sed odio dui.</p>
 						<p>
 							<a class="btn btn-default" href="#" role="button">View
-								details »</a>
+								details Â»</a>
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -65,7 +67,7 @@
 							malesuada magna mollis euismod. Donec sed odio dui.</p>
 						<p>
 							<a class="btn btn-default" href="#" role="button">View
-								details »</a>
+								details Â»</a>
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -77,7 +79,7 @@
 							malesuada magna mollis euismod. Donec sed odio dui.</p>
 						<p>
 							<a class="btn btn-default" href="#" role="button">View
-								details »</a>
+								details Â»</a>
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -89,7 +91,7 @@
 							malesuada magna mollis euismod. Donec sed odio dui.</p>
 						<p>
 							<a class="btn btn-default" href="#" role="button">View
-								details »</a>
+								details Â»</a>
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -101,7 +103,7 @@
 							malesuada magna mollis euismod. Donec sed odio dui.</p>
 						<p>
 							<a class="btn btn-default" href="#" role="button">View
-								details »</a>
+								details Â»</a>
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -113,7 +115,7 @@
 							malesuada magna mollis euismod. Donec sed odio dui.</p>
 						<p>
 							<a class="btn btn-default" href="#" role="button">View
-								details »</a>
+								details Â»</a>
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -130,7 +132,7 @@
 		<!--  /Content -->
 
 		<!--  footer -->		
-		<%@include file="include/footer.jsp" %>		
+		<%@include file="../include/footer.jsp" %>		
 		<!--  /footer -->
 
 	</div>

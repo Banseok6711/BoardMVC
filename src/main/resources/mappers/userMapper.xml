@@ -5,8 +5,8 @@
 <mapper namespace="com.banseok.user">
 
 	<insert id="create">
-		insert into tbl_user(userid, userpw , username,age,birth)
-		values(#{userid} ,#{userpw} , #{username} , #{age} , #{birth})
+		insert into tbl_user(userid, userpw , username,birth ,regdate)
+		values(#{userid} ,#{userpw} , #{username} , #{birth} , now())
 	</insert>
 	
 	<select id="listAll" resultType="com.user.domain.UserVO" >
