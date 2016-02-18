@@ -65,21 +65,26 @@
 
 							<button type="submit" class="btn btn-lg btn-success">OK</button>
 							<button type="button" class="btn btn-lg btn-danger">취소</button>
-							<button type="button" class="btn btn-lg btn-warning" id="delete" data-target="#myModal">탈퇴</button>
+							<button type="button" class="btn btn-lg btn-warning"
+								data-toggle="modal" id="delete" data-target="#myModal">탈퇴</button>
 
-							<!-- modal 부분 -->
-							<div id="myModal" class="modal hide fade">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">&times;</button>
-									<h3>Modal header</h3>
-								</div>
-								<div class="modal-body">
-									<p>One fine body…</p>
-								</div>
-								<div class="modal-footer">
-									<a href="#" class="btn">Close</a> <a href="#"
-										class="btn btn-primary">Save changes</a>
+							<!-- modal  -->
+							<div id="myModal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">&times;</button>
+											<h3>회원 탈퇴</h3>
+										</div>
+										<div class="modal-body">
+											<p>탈퇴 하시겠습니까???</p>
+										</div>
+										<div class="modal-footer">
+											<a href="#" class="btn">Close</a> 
+											<a href="/user/userDelete?userid=${userVO.userid}"	class="btn btn-primary">OK</a>
+										</div>
+									</div>
 								</div>
 							</div>
 							<!--  -->
@@ -117,11 +122,7 @@
 		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 		<script src="/resources/dist/js/offcanvas.js"></script>
 		<script>
-			$('#delete').click(function(){
-				$('#myModal').modal('show');	
-			})
 			
 		</script>
-		
 </body>
 </html>

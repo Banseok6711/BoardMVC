@@ -19,10 +19,16 @@
 
 <!-- Custom styles for this template -->
 <link href="/resources/dist/css/offcanvas.css" rel="stylesheet">
-
 </head>
-
 <body>
+	<c:if test="${msg =='deleteSuccess'}">
+		<script>
+			alert("삭제되었습니다!");
+		</script>
+	</c:if>
+	
+
+
 	<!--  navbar -->	
 	<%@include file="../include/navbar.jsp" %>	
 	<!-- /.navbar -->

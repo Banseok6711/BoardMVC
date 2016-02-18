@@ -1,5 +1,6 @@
 package com.user.controller;
 
+import java.awt.Dialog.ModalExclusionType;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -71,8 +72,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/listall")
-	public String listAll(Model model)throws Exception{
+	public String listAll(Model model , String result)throws Exception{
 		
+		logger.info("listall... result:"+result);
+		
+	
+		if(result == null){
+			
+		}	//삭제된 뒤에 list를 부를경우
+		else if(result.equals("deleteSuccess")){
+			model.addAttribute("msg", result);
+			
+		}
 		
 		logger.info("userlist....... ");
 		
@@ -130,6 +141,20 @@ public class UserController {
 		
 		return "user/userinfo";
 	}
+	
+	@RequestMapping(value="/userDelete" , method=RequestMethod.GET)
+	public String userDelete(Model model, String userid)throws Exception{
+		logger.info("userDelete.....");
+		
+		service.delete(userid);
+		
+		logger.info("삭제된후 :"+service.read(userid));
+		
+		model.addAttribute("result", "deleteSuccess");
+		
+		return "redirect:/user/listall";
+	}
+	
 	
 		
 
