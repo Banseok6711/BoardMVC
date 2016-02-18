@@ -24,7 +24,7 @@
 	</select>
 	
 	<update id="update">
-		update tbl_user set userpw=#{userpw} , email=#{email}, phone=#{phone}
+		update tbl_user set userpw=#{userpw} , username=#{username},email=#{email}, phone=#{phone}
 		where userid=#{userid} 				
 	</update>
 	

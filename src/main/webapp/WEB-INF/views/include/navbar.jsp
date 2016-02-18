@@ -13,8 +13,7 @@
 			<a class="navbar-brand" href="#">우리동네 가게들</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">ㅇ</a></li>
+			<ul class="nav navbar-nav">				
 				<li><a href="#about">About</a></li>
 				<li><a href="#contact">Contact</a></li>
 				<li><a href="#contact">Join</a></li>

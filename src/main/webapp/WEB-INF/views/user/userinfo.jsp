@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,32 +34,25 @@
 			<div class="col-xs-12 col-sm-9">
 
 				<div class="jumbotron">
-					<h1>회원가입</h1>
+					<h1>UserInfo</h1>
 					<p></p>
 				</div>
 				<div class="row">
 					<!-- <div class="col-xs-6 col-lg-4"> -->					
 					<div class="col-xs-6 col-xs-offset-1">
-						<form class="form-signin" method="post"  action="/user/register">
-							<h2 class="form-signin-heading">회원가입</h2>
-							
-								<p class="text-info">아이디</p> <input type="text" name="userid" class="form-control" placeholder="ID" >
-								<hr>
-								<p class="text-info">비밀번호</p><input type="password" name="userpw" class="form-control"	placeholder="Password" >
-								<hr>
-								<p class="text-info">비밀번호 확인</p><input type="password" class="form-control"placeholder="PasswordCheck" >
-								<hr>
-								<p class="text-info">이름</p><input type="text"  name="username"class="form-control"	placeholder="name" >
-								<hr>
-								<p class="text-info">생년월일</p><input type="text"  name="birth" class="form-control"	placeholder="birth(900127)">
-								<hr>
-								<p class="text-info">이메일</p><input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" >
-								<hr>
-								<p class="text-info">전화번호</p><input type="text"  name="phone" class="form-control" placeholder="phone(01092438100)">
-								<hr>
+						<form class="form-signin" method="get"  action="/user/userEdit?userid=${userVO.userid}">
+							<h2 class="form-signin-heading">회원 정보 ${userVO.userid}</h2>
 								
-								<button type="submit" class="btn btn-lg btn-success">OK</button>	
-								<button type="button" class="btn btn-lg btn-danger">Cancle</button>					
+							
+								<p class="text-info">아이디</p> <input type="text" name="userid" class="form-control" value="${userVO.userid}" readonly="readonly">
+								<p class="text-info">비밀번호</p><input type="password" name="userpw" class="form-control" value="${userVO.userpw}" readonly="readonly" >
+								<p class="text-info">이름</p><input type="text"  name="username"class="form-control"	 value="${userVO.username}" readonly="readonly"> 
+								<p class="text-info">생년월일</p><input type="text"  name="birth" class="form-control" value="${userVO.birth}" readonly="readonly">
+								<p class="text-info">이메일</p><input type="email" name="email" id="inputEmail" class="form-control" value="${userVO.email}" readonly="readonly">
+								<p class="text-info">전화번호</p><input type="text"  name="phone" class="form-control" value="${userVO.phone}" readonly="readonly">
+								
+								<button type="submit" class="btn btn-lg btn-success">수정</button>	
+								<button type="button" class="btn btn-lg btn-danger">취소</button>					
 						</form>
 					</div>
 				</div> 

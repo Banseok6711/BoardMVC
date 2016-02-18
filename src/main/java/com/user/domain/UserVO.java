@@ -2,8 +2,6 @@ package com.user.domain;
 
 import java.util.Date;
 
-import junit.framework.Protectable;
-
 public class UserVO {
 	
 	private String userid;

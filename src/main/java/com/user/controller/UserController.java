@@ -4,12 +4,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -90,6 +88,48 @@ public class UserController {
 		return "user/userlist";
 	}
 	
+	@RequestMapping(value="/userinfo")
+	public String userinfo(Model model , String userid)throws Exception{
+		
+		logger.info("userinfo....");
+		
+		UserVO vo = service.read(userid);
+		
+		logger.info("vo:"+ vo.toString());
+		
+		model.addAttribute("userVO" , vo);
+		
+		return "user/userinfo";
+	}
+	
+	@RequestMapping(value="/userEdit", method=RequestMethod.GET)
+	public String userEditGet(Model model , String userid)throws Exception{
+		
+		logger.info("userEditGet....");
+		
+		UserVO vo = service.read(userid);
+		
+		logger.info("vo:"+ vo.toString());
+		
+		model.addAttribute("userVO" , vo);
+		
+		return "user/userEdit";
+	}
+	
+	
+	@RequestMapping(value="/userEdit" , method=RequestMethod.POST)
+	public String userEditPost(Model model , UserVO vo)throws Exception {
+		
+		logger.info("userEditPost....");
+		
+		service.update(vo);
+		
+		logger.info("수정된후 vo:"+service.read(vo.getUserid()).toString());
+		
+		model.addAttribute("userid", vo.getUserid());
+		
+		return "user/userinfo";
+	}
 	
 		
 
