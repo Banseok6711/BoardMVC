@@ -37,5 +37,9 @@ public class UserService {
 	public void delete(String userid)throws Exception{
 		dao.delete(userid);
 	}
+	
+	public UserVO login(UserVO vo)throws Exception{
+		return dao.login(vo);
+	}
 
 }

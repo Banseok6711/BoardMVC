@@ -4,7 +4,9 @@ import java.awt.Dialog.ModalExclusionType;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
+import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -66,7 +68,9 @@ public class UserController {
 
 	
 	@RequestMapping(value="/home")
-	public String home(){
+	public String home(Model model , String result){
+		
+		model.addAttribute("msg" , result);
 		
 		return "user/home";
 	}
@@ -100,11 +104,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/userinfo")
-	public String userinfo(Model model , String userid)throws Exception{
+	public String userinfo(Model model , String userid , HttpSession session)throws Exception{
 		
 		logger.info("userinfo....");
 		
-		UserVO vo = service.read(userid);
+		UserVO loginUser=(UserVO)session.getAttribute("login");
+		
+		
+		UserVO vo = service.read(loginUser.getUserid());
 		
 		logger.info("vo:"+ vo.toString());
 		
@@ -154,6 +161,39 @@ public class UserController {
 		
 		return "redirect:/user/listall";
 	}
+	
+	
+	@RequestMapping("/loginPost")
+	public String loginCheck(Model model ,UserVO vo)throws Exception{
+		
+		UserVO user =service.login(vo);
+		
+		//user == null
+		if(user == null){
+			model.addAttribute("userVO", user);
+		}
+		
+		logger.info("login......");
+		logger.info("user:"+user);
+		
+		/* todo 
+		 * -  userid add session		
+		*/ 
+		
+		return "user/home";
+		
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(Model model, HttpSession session)throws Exception{
+		
+		session.invalidate();
+		
+		model.addAttribute("msg", "logout");
+		
+		return "redirect:/user/home";
+	}
+	
 	
 	
 		

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -21,7 +22,52 @@
 </head>
 
 <body>
-	<!--  navbar -->	
+	<c:choose>
+		<c:when test="${'logout' == msg }">
+			<script>
+				alert("로그아웃!");
+			</script>
+		</c:when>
+		<c:when test="${login ne null}">
+			<script>
+				alert("${login.userid} 님 반갑습니다!");
+			</script>
+		</c:when>
+		<c:when test="${login eq null}">
+			<script>
+				alert("Login Fail!!");
+			</script>
+		</c:when>		
+	</c:choose>
+	<%-- 
+	<c:if test="${login ne null }">	
+		<script>
+			alert("${login.userid} 님 반갑습니다!");
+		</script>
+	</c:if>
+	<c:if test="${login eq null}">
+		<script>
+			alert("로그인 실패!");
+		</script>
+	</c:if>
+	<c:if test="${'logout' == msg}">
+		<script>
+			alert("로그아웃!");
+		</script>
+	</c:if> --%>
+<%-- 
+	<c:if test="${result == 'loginFail'}">
+		<script>
+			alert("로그인 실패!");
+		</script>
+	</c:if>	
+	<c:if test="${result == 'loginSuccess'}">
+		<script>	
+			alert("로그인 성공!");
+		</script>
+	</c:if>
+
+ --%>	<!--  navbar -->	
 	<%@include file="../include/navbar.jsp" %>	
 	<!-- /.navbar -->
 

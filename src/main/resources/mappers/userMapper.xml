@@ -5,8 +5,8 @@
 <mapper namespace="com.banseok.user">
 
 	<insert id="create">
-		insert into tbl_user(userid, userpw , username,email,birth ,regdate)
-		values(#{userid} ,#{userpw} , #{username} ,#{email} , #{birth} , now())
+		insert into tbl_user(userid, userpw , username,email,birth , phone,regdate)
+		values(#{userid} ,#{userpw} , #{username} ,#{email} , #{birth}, #{phone}, now())
 	</insert>
 	
 	<select id="listAll" resultType="com.user.domain.UserVO" >
@@ -32,5 +32,14 @@
 		delete from tbl_user
 		where userid=#{userid}
 	</delete>
+	
+	<select id="login" resultType="com.user.domain.UserVO">
+		select * from tbl_user
+		where userid=#{userid} and userpw=#{userpw}
+	</select>
+</mapper>
+		
 
-</mapper>  
+
+
+

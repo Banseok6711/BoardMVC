@@ -29,8 +29,12 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory1"></constructor-arg>
 	</bean>
 	
-		
+	<!-- User -->	
 	<context:component-scan base-package="com.user.persistence" />
 	<context:component-scan base-package="com.user.service" />
+	
+	<!-- UserBoard -->
+	<context:component-scan base-package="com.userBoard.persistence"/>
+	<context:component-scan base-package="com.userBoard.service"/>
 
 </beans>

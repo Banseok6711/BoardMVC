@@ -47,4 +47,10 @@ public class UserDAOImpl implements UserDAO {
 		session.delete(namespace+".delete", userid);
 	}
 
+	@Override
+	public UserVO login(UserVO vo) throws Exception {
+		
+		return session.selectOne(namespace+".login" , vo);
+	}
+
 }

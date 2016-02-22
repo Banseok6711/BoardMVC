@@ -16,5 +16,7 @@ public interface UserDAO {
 	
 	public void delete(String userid)throws Exception;
 	
+	public UserVO login(UserVO vo)throws Exception;
+	
 	
 }
