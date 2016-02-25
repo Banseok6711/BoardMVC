@@ -4,11 +4,13 @@ import java.awt.Dialog.ModalExclusionType;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,9 +70,9 @@ public class UserController {
 
 	
 	@RequestMapping(value="/home")
-	public String home(Model model , String result){
+	public String home(Model model , String msg){
 		
-		model.addAttribute("msg" , result);
+		model.addAttribute("MSG" , msg);
 		
 		return "user/home";
 	}
@@ -108,10 +110,17 @@ public class UserController {
 		
 		logger.info("userinfo....");
 		
-		UserVO loginUser=(UserVO)session.getAttribute("login");
+		UserVO vo ;
+		//listAll 에서 회원 정보누르는 경우 파라미터로 userid를 넘겨받기때문에 userid가 null이 아님
 		
+		if(userid != null){
+			vo = service.read(userid);
+			
+		}else{ //내정보를 누를때는 로그인한 사용자의 아이디가 저장되있는 세션에서 찾는다.  
+			UserVO loginUser=(UserVO)session.getAttribute("login");		
+			 vo = service.read(loginUser.getUserid());
+		}
 		
-		UserVO vo = service.read(loginUser.getUserid());
 		
 		logger.info("vo:"+ vo.toString());
 		
@@ -163,25 +172,24 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/loginPost")
+	@RequestMapping(value="/loginPost" , method=RequestMethod.POST)
 	public String loginCheck(Model model ,UserVO vo)throws Exception{
 		
 		UserVO user =service.login(vo);
 		
 		//user == null
-		if(user == null){
-			model.addAttribute("userVO", user);
+		/*if(user == null){
+			
 		}
+		*/
+		model.addAttribute("userVO", user);
 		
-		logger.info("login......");
-		logger.info("user:"+user);
+		logger.info("Controller:loginPOst");
 		
-		/* todo 
-		 * -  userid add session		
-		*/ 
 		
-		return "user/home";
+		return "forward:/user/home";
 		
+			
 	}
 	
 	@RequestMapping("/logout")
@@ -191,7 +199,8 @@ public class UserController {
 		
 		model.addAttribute("msg", "logout");
 		
-		return "redirect:/user/home";
+		
+		return "user/home";
 	}
 	
 	

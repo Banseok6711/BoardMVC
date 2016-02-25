@@ -2,17 +2,20 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="com.banseok.userBoard">
-	<insert id="write">
+ 
+	 <insert id="write">
 		insert into tbl_userboard(title,content,images,likeCount,userid,regdate)
 		values(#{title} , #{content} ,#{images} , 0 , #{userid},now())
 	</insert>
+ 
 	
 	<select id="read" resultType="com.userBoard.domain.UserBoardVO">
 		select * 
 		from tbl_userboard 
 		where bno=#{bno}
-	</select>
+	</select> 
 	
 </mapper>
 		

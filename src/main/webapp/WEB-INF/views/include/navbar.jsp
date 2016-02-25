@@ -24,7 +24,7 @@
 				<form class="navbar-form pull-right" action="/user/loginPost" method="post">
 	              <input class="span2" type="text" name="userid" placeholder="Email">
 	              <input class="span2" type="password" name="userpw" placeholder="Password">
-	              <button type="submit" class="btn btn-small btn-success">Sign in</button>
+	              <button type="submit" class="btn btn-small btn-success" id="sign">Sign in</button>
 	            </form>
             </c:if>
            	<c:if test="${login ne null }">

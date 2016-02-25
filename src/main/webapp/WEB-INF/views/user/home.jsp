@@ -22,22 +22,22 @@
 </head>
 
 <body>
-	<c:choose>
-		<c:when test="${'logout' == msg }">
-			<script>
-				alert("로그아웃!");
-			</script>
-		</c:when>
+	<c:choose>		
 		<c:when test="${login ne null}">
 			<script>
 				alert("${login.userid} 님 반갑습니다!");
 			</script>
-		</c:when>
-		<c:when test="${login eq null}">
+		</c:when>	
+		<c:when test="${msg eq 'logout'}">
 			<script>
-				alert("Login Fail!!");
+				alert("로그아웃!");
 			</script>
-		</c:when>		
+		</c:when>	
+		<c:when test="${msg eq 'loginFail'}">	
+			<script>
+				alert("ID,PW error!");
+			</script> 
+		</c:when>	
 	</c:choose>
 	<%-- 
 	<c:if test="${login ne null }">	

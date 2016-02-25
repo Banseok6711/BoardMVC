@@ -57,8 +57,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect("/user/home");
 		}else{ // 아이디나 비밀번호 틀리거나 회원이 아닐때 
 			
-			System.out.println("로그인 실패 ...");			
-			response.sendRedirect("/user/home");
+			System.out.println("로그인 실패 ...");
+			
+//			request.setAttribute("msg", "loginFail");
+			
+			modelAndView.addObject("msg", "loginFail");
+			modelAndView.setViewName("/user/home");
+			
 		}
 		
 		
