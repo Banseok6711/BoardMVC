@@ -70,11 +70,21 @@ public class UserController {
 
 	
 	@RequestMapping(value="/home")
-	public String home(Model model , String msg){
+	public String home(Model model , String msg , HttpSession session){
 		
-		model.addAttribute("MSG" , msg);
+		Object admin= session.getAttribute("admin");
+//		session.invalidate();
 		
-		return "user/home";
+//		System.out.println("admin: "+admin);
+		logger.info("admin:"+admin);
+		
+		//admin으로 접속중
+		if(admin != null){
+			return "adminUser/home";
+		}else{
+			model.addAttribute("MSG" , msg);
+			return "user/home";
+		}		
 	}
 	
 	@RequestMapping(value="/listall")
@@ -102,7 +112,7 @@ public class UserController {
 		 
 		 model.addAttribute("userList", userlist);
 		
-		return "user/userlist";
+		return "adminUser/userlist";
 	}
 	
 	@RequestMapping(value="/userinfo")
@@ -126,11 +136,22 @@ public class UserController {
 		
 		model.addAttribute("userVO" , vo);
 		
-		return "user/userinfo";
+		Object admin =session.getAttribute("admin");
+		
+		if(admin == null){
+			return "user/userinfo";
+		}else{
+			return "adminUser/userinfo";
+		}
+		
+		
+
+		//임시 주석처리( admin 화면 테스트)	
+//		return "user/userinfo";
 	}
 	
 	@RequestMapping(value="/userEdit", method=RequestMethod.GET)
-	public String userEditGet(Model model , String userid)throws Exception{
+	public String userEditGet(Model model , String userid, HttpSession session)throws Exception{
 		
 		logger.info("userEditGet....");
 		
@@ -140,12 +161,23 @@ public class UserController {
 		
 		model.addAttribute("userVO" , vo);
 		
-		return "user/userEdit";
+		
+		Object admin =session.getAttribute("admin");
+		
+		if(admin == null){
+			return "user/userEdit";
+		}else{
+			return "adminUser/userEdit";
+		}
+		
+		
+		
+		
 	}
 	
 	
 	@RequestMapping(value="/userEdit" , method=RequestMethod.POST)
-	public String userEditPost(Model model , UserVO vo)throws Exception {
+	public String userEditPost(Model model , UserVO vo, HttpSession session)throws Exception {
 		
 		logger.info("userEditPost....");
 		
@@ -155,7 +187,16 @@ public class UserController {
 		
 		model.addAttribute("userid", vo.getUserid());
 		
-		return "user/userinfo";
+		Object admin =session.getAttribute("admin");
+		
+		if(admin == null){
+			return "user/userinfo";
+		}else{
+			return "adminUser/userinfo";
+		}
+		
+		
+		
 	}
 	
 	@RequestMapping(value="/userDelete" , method=RequestMethod.GET)

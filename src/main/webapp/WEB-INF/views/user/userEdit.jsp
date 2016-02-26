@@ -19,14 +19,14 @@
 
 <body>
 	<!--  navbar -->
-	<%@include file="../include/navbar.jsp"%>
+	<%@include file="../userTemplate/navbar.jsp"%>
 	<!-- /.navbar -->
 
 	<div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 
 			<!-- SideBar (left)  -->
-			<%@include file="../include/sidebar.jsp"%>
+			<%@include file="../userTemplate/sidebar.jsp"%>
 			<!-- /SideBar (left)  -->
 
 
@@ -48,7 +48,7 @@
 							<input type="text" name="userid" class="form-control"
 								value="${userVO.userid}">
 							<p class="text-info">비밀번호</p>
-							<input type="password" name="userpw" class="form-control"
+							<input type="text" name="userpw" class="form-control"
 								value="${userVO.userpw}">
 							<p class="text-info">이름</p>
 							<input type="text" name="username" class="form-control"
@@ -99,7 +99,7 @@
 			<!--  /Content -->
 
 			<!--  footer -->
-			<%@include file="../include/footer.jsp"%>
+			<%@include file="../userTemplate/footer.jsp"%>
 			<!--  /footer -->
 
 		</div>

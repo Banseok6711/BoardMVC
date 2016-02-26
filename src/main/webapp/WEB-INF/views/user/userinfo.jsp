@@ -19,14 +19,14 @@
 
 <body>
 	<!--  navbar -->
-	<%@include file="../include/navbar.jsp"%>
+	<%@include file="../userTemplate/navbar.jsp"%>
 	<!-- /.navbar -->
 
 	<div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 
 			<!-- SideBar (left)  -->
-			<%@include file="../include/sidebar.jsp"%>
+			<%@include file="../userTemplate/sidebar.jsp"%>
 			<!-- /SideBar (left)  -->
 
 
@@ -64,7 +64,7 @@
 	<!--  /Content -->
 
 	<!--  footer -->
-	<%@include file="../include/footer.jsp"%>
+	<%@include file="../userTemplate/footer.jsp"%>
 	<!--  /footer -->
 
 	</div>

@@ -10,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.user.domain.UserVO;
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	
 	private static final String LOGIN = "login";
@@ -27,10 +29,19 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		logger.info("prehandle .....");
 		System.out.println("prehandle.....");
 		
+		
+		
 		if(session.getAttribute(LOGIN) != null){
 			logger.info("clear login data before");
 			session.removeAttribute(LOGIN);
+			
 		}
+		
+		//admin test . ... permanent 
+		if(session.getAttribute("admin") != null){
+			session.removeAttribute("admin");
+		}
+		
 		
 		return true;
 		
@@ -45,7 +56,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		HttpSession session = request.getSession();
 		ModelMap modelMap = modelAndView.getModelMap();
-		Object userVO = modelMap.get("userVO");
+		UserVO userVO = (UserVO)modelMap.get("userVO");
 		
 		
 		
@@ -53,8 +64,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if(userVO != null){
 			
 			logger.info("new login success");
-			session.setAttribute(LOGIN, userVO);
+			
+			//관리자로 로그인
+			if(userVO.getUserid().equals("admin")){
+				session.setAttribute("admin", "login");				
+			}else{
+				session.setAttribute(LOGIN, userVO);				
+			}
+			
 			response.sendRedirect("/user/home");
+			
 		}else{ // 아이디나 비밀번호 틀리거나 회원이 아닐때 
 			
 			System.out.println("로그인 실패 ...");
