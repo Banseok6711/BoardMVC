@@ -25,58 +25,112 @@
 	<%@include file="../userTemplate/navbar.jsp" %>	
 	<!-- /.navbar -->
 
-	<div class="container">
-		<div class="row row-offcanvas row-offcanvas-right">
-		
-			<!-- SideBar (left)  -->			
-			<%@include file="../userTemplate/sidebar.jsp" %>		
-			<!-- /SideBar (left)  -->
+	<div class="container">		
+			
+			
+				<!-- SideBar (left)  -->			
+				<%@include file="../userTemplate/sidebar.jsp" %>		
+				<!-- /SideBar (left)  -->
+			
+				<!-- row -->
+			
+			<div class="col-xs-6 col-sm-9">
+					<div class="page-header">
+  						<h1>Write <small> for UserBoard</small></h1>
+					</div>	
+					<!-- row -->			
+					<div class="row">			
+						<div class="col-xs-6 col-sm-3">				
+							<div>
+								 <h3>Title</h3>													
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-9">				
+							<div> 
+								<input type="text" class="form-control" placeholder="input Title">					
+							</div>
+						</div>											
+					</div>				
+					<!--  //row -->	
+					<!-- row -->			
+					<div class="row">			
+						<div class="col-xs-6 col-sm-3">				
+							<div>
+								 <h3>Writer</h3>													
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-9">				
+							<div> 
+								<c:if test="${userVO ne null }">
+									<input type="text" class="form-control" placeholder="${userVO.username}" readonly="readonly">
+								</c:if>
+								<c:if test="${userVO eq null }">
+									<input type="text" class="form-control" placeholder="input your name">
+								</c:if>
+													
+							</div>
+						</div>											
+					</div>				
+					<!--  //row -->	
+					<!-- row -->			
+					<div class="row">			
+						<div class="col-xs-6 col-sm-3">				
+							<div>
+								 <h3>Content</h3>													
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-9">				
+							<div> 
+								<textarea class="form-control" rows="10" name="content"></textarea>
+							</div>
+						</div>											
+					</div>				
+					<!--  //row -->	
+					<!-- row -->			
+					<div class="row">			
+						<div class="col-xs-6 col-sm-3">				
+							<div>
+								 <h3>file</h3>													
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-9">				
+							<div> 
+								<!-- file  -->
+								<input type="file"/>
+							</div>							
+						</div>											
+					</div>				
+					<!--  //row -->	
+					<!-- row -->			
+					<div class="row">			
+						<div class="col-xs-6 col-sm-3">				
+							<div>								 											
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-9">				
+							<div> 
+								<button type="submit" class="btn btn-lg btn-success">Write</button>	
+								<button type="button" class="btn btn-lg btn-danger">Cancle</button>									
+							</div>							
+						</div>											
+					</div>				
+					<!--  //row -->	
+							
+			</div>		
+			<!--  Content -->
 			
 		
-		<!--  Content -->
-
-			<div class="col-xs-12 col-sm-9">
-			<!-- 	<p class="pull-left visible-xs">
-					<button type="button" class="btn btn-primary btn-xs"
-						data-toggle="offcanvas">Toggle nav</button>
-				</p> -->
-				<div class="jumbotron">
-					<h1>userList</h1>					
-				</div>
-				<div class="row">
-				
-				<div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>번호</th>
-                  <th>아이디</th>
-                  <th>이름</th>
-                  <th>생년월일</th>
-                  <th>가입날짜</th>
-                </tr>
-              </thead>
-              <tbody>
-                 
-              </tbody>
-            </table>
-          </div>
-				</div>
-				<!--/row-->
-			</div>
-		</div>
-		<!--/row-->
-
-		<hr>
 		
-		<!--  /Content -->
-
+			<!--  /Content -->
+		</div>
+		<!--/.container-->
+		
+		
 		<!--  footer -->		
 		<%@include file="../userTemplate/footer.jsp" %>		
 		<!--  /footer -->
+			
 
-	</div>
-	<!--/.container-->
 
 
 	<!-- Bootstrap core JavaScript
