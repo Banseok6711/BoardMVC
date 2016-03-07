@@ -41,14 +41,15 @@ public class UserBoardDAOImpl implements UserBoardDAO{
 	}
 
 	@Override
-	public UserBoardVO edit(UserBoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public void edit(UserBoardVO boardVO) throws Exception {
+				
+		 session.update(nameSpace+".edit", boardVO);
 	}
 
 	@Override
 	public void delete(int bno) throws Exception {
-		// TODO Auto-generated method stub
+		
+		session.delete(nameSpace+".delete" , Integer.valueOf(bno));
 		
 	}
 

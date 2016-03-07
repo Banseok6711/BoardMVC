@@ -22,6 +22,18 @@
 		from tbl_userboard		
 	</select>
 	
+	<update id="edit">
+		update tbl_userboard
+		set title=#{title} , content=#{content} , images=#{images}
+		where bno=#{bno} 
+	</update>
+	
+	<delete id="delete">
+		delete  
+		from tbl_userboard
+		where bno=#{bno}
+	</delete>
+	
 </mapper>
 		
 

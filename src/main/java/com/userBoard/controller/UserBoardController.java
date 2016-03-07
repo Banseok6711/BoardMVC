@@ -100,6 +100,46 @@ public class UserBoardController {
 	}
 	
 	
+	@RequestMapping(value="/userBoardDelete" , method=RequestMethod.GET)
+	public String delete(String bno)throws Exception{
+		
+		int bnoNumber = Integer.parseInt(bno);
+		
+		userBoardService.delete(bnoNumber);
+		
+		
+		return "redirect:/userBoard/boardList";
+	}
+	
+	@RequestMapping(value="/userBoardEdit" , method=RequestMethod.POST)
+	public String edit(UserBoardVO boardVO , Model model , String username)throws Exception{
+		
+		
+		System.out.println("boardVO:"+boardVO.toString());
+		
+		UserBoardVO vo= userBoardService.read(boardVO.getBno());
+		
+		boardVO.setUserid(vo.getUserid());
+		
+		model.addAttribute("boardVO", boardVO);
+		model.addAttribute("username", username);
+		
+		return "userBoard/userBoardEdit";
+	}
+	
+	@RequestMapping(value="/userBoardEditPro" , method=RequestMethod.POST)
+	public String editPro(Model model , UserBoardVO boardVO)throws Exception{
+		
+//		int bnoNum = Integer.parseInt(bno);
+		
+//		boardVO.setBno(bnoNum);
+		
+		userBoardService.edit(boardVO);
+		
+		return "redirect:/userBoard/boardList";
+	}
+	
+	
 	
 	
 	

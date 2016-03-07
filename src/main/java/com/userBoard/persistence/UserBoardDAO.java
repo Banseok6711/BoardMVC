@@ -10,7 +10,7 @@ public interface UserBoardDAO {
 	
 	public UserBoardVO read(int bno)throws Exception;
 	
-	public UserBoardVO edit(UserBoardVO boardVO)throws Exception;
+	public void edit(UserBoardVO boardVO)throws Exception;
 	
 	public void delete(int bno)throws Exception;
 	
