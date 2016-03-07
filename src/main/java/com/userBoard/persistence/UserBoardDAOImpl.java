@@ -54,8 +54,11 @@ public class UserBoardDAOImpl implements UserBoardDAO{
 
 	@Override
 	public List<UserBoardVO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		logger.info("list...");
+		
+		
+		return session.selectList(nameSpace+".list");
 	}
 
 }

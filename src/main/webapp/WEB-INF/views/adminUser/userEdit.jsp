@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,32 +46,32 @@
 					<!-- <div class="col-xs-6 col-lg-4"> -->
 					<div class="col-xs-6 col-xs-offset-1">
 						<form class="form-signin" method="post" action="/user/userEdit">
-							<h2 class="form-signin-heading">ȸ�� ���� ${userVO.userid}</h2>
+							<h2 class="form-signin-heading">회원 정보 ${userVO.userid}</h2>
 
 
-							<p class="text-info">���̵�</p>
+							<p class="text-info">아이디</p>
 							<input type="text" name="userid" class="form-control"
 								value="${userVO.userid}">
-							<p class="text-info">��й�ȣ</p>
+							<p class="text-info">비밀번호</p>
 							<input type="text" name="userpw" class="form-control"
 								value="${userVO.userpw}">
-							<p class="text-info">�̸�</p>
+							<p class="text-info">이름</p>
 							<input type="text" name="username" class="form-control"
 								value="${userVO.username}">
-							<p class="text-info">�������</p>
+							<p class="text-info">생년월일</p>
 							<input type="text" name="birth" class="form-control"
 								value="${userVO.birth}">
-							<p class="text-info">�̸���</p>
+							<p class="text-info">이메일</p>
 							<input type="email" name="email" id="inputEmail"
 								class="form-control" value="${userVO.email}">
-							<p class="text-info">��ȭ��ȣ</p>
+							<p class="text-info">전화번호</p>
 							<input type="text" name="phone" class="form-control"
 								value="${userVO.phone}">
 
 							<button type="submit" class="btn btn-lg btn-success">OK</button>
-							<button type="button" class="btn btn-lg btn-danger">���</button>
+							<button type="button" class="btn btn-lg btn-danger">취소</button>
 							<button type="button" class="btn btn-lg btn-warning"
-								data-toggle="modal" id="delete" data-target="#myModal">Ż��</button>
+								data-toggle="modal" id="delete" data-target="#myModal">탈퇴</button>
 
 							<!-- modal  -->
 							<div id="myModal" class="modal fade" role="dialog">
@@ -80,10 +80,10 @@
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">&times;</button>
-											<h3>ȸ�� Ż��</h3>
+											<h3>회원 탈퇴</h3>
 										</div>
 										<div class="modal-body">
-											<p>Ż�� �Ͻðڽ��ϱ�???</p>
+											<p>탈퇴 하시겠습니까???</p>
 										</div>
 										<div class="modal-footer">
 											<a href="#" class="btn">Close</a> 

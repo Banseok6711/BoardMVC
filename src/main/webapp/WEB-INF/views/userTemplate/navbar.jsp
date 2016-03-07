@@ -20,22 +20,36 @@
 				<li><a href="/user/register">Join</a></li>		
 			</ul>			
 			
-			<c:if test="${login eq null}">
-				<form class="navbar-form pull-right" action="/user/loginPost" method="post">
-	              <input class="span2" type="text" name="userid" placeholder="Email">
-	              <input class="span2" type="password" name="userpw" placeholder="Password">
-	              <button type="submit" class="btn btn-small btn-success" id="sign">Sign in</button>
-	            </form>
-            </c:if>
-           	<c:if test="${login ne null }">
-            	<div class="navbar pull-right">
-            		<a class="navbar-brand" href="#">${login.userid }</a> 
-            		<div class="navbar-brand" >님 접속중...</div>
-            	</div>
-            	<div class="navbar pull-right">
-            		<a class="navbar-brand" href="/user/logout">로그아웃</a>
-            	</div>
-           	</c:if>
+			<c:choose>
+				<c:when test="${login eq null && admin eq null}">
+					<form class="navbar-form pull-right" action="/user/loginPost" method="post">
+		              <input class="span2" type="text" name="userid" placeholder="Email">
+		              <input class="span2" type="password" name="userpw" placeholder="Password">
+		              <button type="submit" class="btn btn-small btn-success" id="sign">Sign in</button>
+		            </form>
+           		 </c:when>
+           		 <c:when test="${login ne null }">
+	            	<div class="navbar pull-right">
+	            		<a class="navbar-brand" href="#">${login.userid }</a> 
+	            		<div class="navbar-brand" >님 접속중...</div>
+	            	</div>
+	            	<div class="navbar pull-right">
+	            		<a class="navbar-brand" href="/user/logout">로그아웃</a>
+	            	</div>
+           		</c:when>
+           		<c:when test="${admin ne null }">
+           			<div class="navbar pull-right">
+	            		<a class="navbar-brand" href="#">Admin</a> 
+	            		<div class="navbar-brand" >님 접속중...</div>
+	            	</div>
+	            	<div class="navbar pull-right">
+	            		<a class="navbar-brand" href="/user/logout">로그아웃</a>
+	            	</div>
+           		</c:when>           		
+			</c:choose>
+			
+			
+           	
             
             
 		</div>

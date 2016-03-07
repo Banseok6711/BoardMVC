@@ -25,15 +25,15 @@
 	<%@include file="../userTemplate/navbar.jsp" %>	
 	<!-- /.navbar -->
 
-	<div class="container">		
+		<div class="container">		
 			
 			
 				<!-- SideBar (left)  -->			
 				<%@include file="../userTemplate/sidebar.jsp" %>		
 				<!-- /SideBar (left)  -->
-			
-				<!-- row -->
-			
+									
+			<!-- content -->
+			<form action="/userBoard/write" method="post">
 			<div class="col-xs-6 col-sm-9">
 					<div class="page-header">
   						<h1>Write <small> for UserBoard</small></h1>
@@ -47,7 +47,7 @@
 						</div>
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
-								<input type="text" class="form-control" placeholder="input Title">					
+								<input type="text" class="form-control" placeholder="input Title" name="title">					
 							</div>
 						</div>											
 					</div>				
@@ -62,7 +62,7 @@
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
 								<c:if test="${userVO ne null }">
-									<input type="text" class="form-control" placeholder="${userVO.username}" readonly="readonly">
+									<input type="text" class="form-control" placeholder="${userVO.username}" readonly="readonly" >
 								</c:if>
 								<c:if test="${userVO eq null }">
 									<input type="text" class="form-control" placeholder="input your name">
@@ -96,7 +96,7 @@
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
 								<!-- file  -->
-								<input type="file"/>
+								<input type="file" name="images"/>
 							</div>							
 						</div>											
 					</div>				
@@ -113,15 +113,11 @@
 								<button type="button" class="btn btn-lg btn-danger">Cancle</button>									
 							</div>							
 						</div>											
-					</div>				
-					<!--  //row -->	
-							
-			</div>		
-			<!--  Content -->
+					</div>									
+			</div>
+			</form>		
+			<!-- //content -->
 			
-		
-		
-			<!--  /Content -->
 		</div>
 		<!--/.container-->
 		

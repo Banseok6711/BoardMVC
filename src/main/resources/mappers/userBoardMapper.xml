@@ -17,6 +17,11 @@
 		where bno=#{bno}
 	</select> 
 	
+	<select id="list" resultType="com.userBoard.domain.UserBoardVO">
+		select * 
+		from tbl_userboard		
+	</select>
+	
 </mapper>
 		
 

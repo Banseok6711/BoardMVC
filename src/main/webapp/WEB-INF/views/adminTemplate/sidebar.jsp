@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="utf-8"%>
   <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -27,7 +27,7 @@
                     <a href="#">Services</a>
                 </li>
                 <li>
-                    <a href="/user/logout">������ �α׾ƿ�</a>
+                    <a href="/user/logout">관리자 로그아웃</a>
                 </li>
             </ul>
         </div>

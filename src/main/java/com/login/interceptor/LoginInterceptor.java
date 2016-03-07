@@ -38,9 +38,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		//admin test . ... permanent 
-		if(session.getAttribute("admin") != null){
+	/*	if(session.getAttribute("admin") != null){
 			session.removeAttribute("admin");
-		}
+		}*/
 		
 		
 		return true;

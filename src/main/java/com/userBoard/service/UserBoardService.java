@@ -33,7 +33,7 @@ public class UserBoardService {
 	}
 	
 	public List<UserBoardVO> list()throws Exception{
-		
+				
 		return dao.list();		
 	}
 	

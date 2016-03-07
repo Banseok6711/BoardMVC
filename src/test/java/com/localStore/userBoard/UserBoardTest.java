@@ -35,9 +35,7 @@ public class UserBoardTest {
 	}
 	
 	@Test
-	public void readTest()throws Exception{
-		
-		
+	public void readTest()throws Exception{				
 		
 		UserBoardVO vo= dao.read(3);
 		

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,18 +46,18 @@
 					<!-- <div class="col-xs-6 col-lg-4"> -->					
 					<div class="col-xs-6 col-xs-offset-1">
 						<form class="form-signin" method="get"  action="/user/userEdit?userid=${userVO.userid}">
-							<h2 class="form-signin-heading">È¸¿ø Á¤º¸ ${userVO.userid}</h2>
+							<h2 class="form-signin-heading">íšŒì› ì •ë³´ ${userVO.userid}</h2>
 								
 							
-								<p class="text-info">¾ÆÀÌµð</p> <input type="text" name="userid" class="form-control" value="${userVO.userid}" readonly="readonly">
-								<p class="text-info">ºñ¹Ð¹øÈ£</p><input type="text" name="userpw" class="form-control" value="${userVO.userpw}" readonly="readonly" >
-								<p class="text-info">ÀÌ¸§</p><input type="text"  name="username"class="form-control"	 value="${userVO.username}" readonly="readonly"> 
-								<p class="text-info">»ý³â¿ùÀÏ</p><input type="text"  name="birth" class="form-control" value="${userVO.birth}" readonly="readonly">
-								<p class="text-info">ÀÌ¸ÞÀÏ</p><input type="email" name="email" id="inputEmail" class="form-control" value="${userVO.email}" readonly="readonly">
-								<p class="text-info">ÀüÈ­¹øÈ£</p><input type="text"  name="phone" class="form-control" value="${userVO.phone}" readonly="readonly">
+								<p class="text-info">ì•„ì´ë””</p> <input type="text" name="userid" class="form-control" value="${userVO.userid}" readonly="readonly">
+								<p class="text-info">ë¹„ë°€ë²ˆí˜¸</p><input type="text" name="userpw" class="form-control" value="${userVO.userpw}" readonly="readonly" >
+								<p class="text-info">ì´ë¦„</p><input type="text"  name="username"class="form-control"	 value="${userVO.username}" readonly="readonly"> 
+								<p class="text-info">ìƒë…„ì›”ì¼</p><input type="text"  name="birth" class="form-control" value="${userVO.birth}" readonly="readonly">
+								<p class="text-info">ì´ë©”ì¼</p><input type="email" name="email" id="inputEmail" class="form-control" value="${userVO.email}" readonly="readonly">
+								<p class="text-info">ì „í™”ë²ˆí˜¸</p><input type="text"  name="phone" class="form-control" value="${userVO.phone}" readonly="readonly">
 								
-								<button type="submit" class="btn btn-lg btn-success">¼öÁ¤</button>	
-								<button type="button" class="btn btn-lg btn-danger">Ãë¼Ò</button>					
+								<button type="submit" class="btn btn-lg btn-success">ìˆ˜ì •</button>	
+								<button type="button" class="btn btn-lg btn-danger">ì·¨ì†Œ</button>					
 						</form>
 					</div>
 				</div> 
