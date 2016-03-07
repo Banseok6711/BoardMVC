@@ -54,7 +54,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/register" , method= RequestMethod.POST)
-	public String registerPOST(Model Model ,UserVO vo) throws Exception{
+	public String registerPOST(Model Model ,UserVO vo , HttpSession session) throws Exception{
 		
 		
 		
@@ -63,9 +63,11 @@ public class UserController {
 		
 		service.insert(vo);
 		
-		Model.addAttribute("result", "success");
+//		Model.addAttribute("userid", vo.getUserid());
 		
-		return "redirect:listall";
+		session.setAttribute("login", vo);
+		
+		return "redirect:userinfo";
 	}
 
 	
@@ -88,7 +90,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/listall")
-	public String listAll(Model model , String result)throws Exception{
+	public String listAll(Model model , String result , HttpSession session)throws Exception{
 		
 		logger.info("listall... result:"+result);
 		
@@ -111,8 +113,17 @@ public class UserController {
 		
 		 
 		 model.addAttribute("userList", userlist);
+		 
+		 
+		 Object admin =session.getAttribute("admin");
+		 
+		 if(admin == null){
+			return "user/userlist";
+		 }else{
+			 return "adminUser/userlist";
+		 }
 		
-		return "adminUser/userlist";
+		
 	}
 	
 	@RequestMapping(value="/userinfo")
