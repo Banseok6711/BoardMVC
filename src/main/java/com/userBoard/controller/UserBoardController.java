@@ -14,12 +14,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.user.domain.UserVO;
 import com.user.service.UserService;
 import com.userBoard.domain.UserBoardVO;
+import com.userBoard.paging.Criteria;
+import com.userBoard.paging.PageMaker;
 import com.userBoard.service.UserBoardService;
 
 
@@ -137,6 +140,32 @@ public class UserBoardController {
 		userBoardService.edit(boardVO);
 		
 		return "redirect:/userBoard/boardList";
+	}
+	
+	@RequestMapping(value="/listCri" , method=RequestMethod.GET)
+	public String listAll(@ModelAttribute Criteria cri , Model model)throws Exception{
+		
+		logger.info("show list page with Criteria.......");
+		
+		model.addAttribute("boardList", userBoardService.listCriteria(cri));
+		
+		return "userBoard/userBoardListCri";
+	}
+	
+	@RequestMapping(value="/listPage" , method=RequestMethod.GET)
+	public String listPage(Criteria cri , Model model)throws Exception{
+		
+		logger.info(cri.toString());
+		
+		model.addAttribute("boardList",userBoardService.listCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(131);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "userBoard/userBoardListPage";
+		
 	}
 	
 	

@@ -34,6 +34,23 @@
 		where bno=#{bno}
 	</delete>
 	
+	<select id="listPage" resultType="com.userBoard.domain.UserBoardVO">
+	select 
+		bno , title, content, userid ,regdate 
+	from	
+		tbl_userboard
+	order by bno asc 
+	limit #{page} , 10
+	</select>
+	
+ 	<select id="listCriteria" resultType="com.userBoard.domain.UserBoardVO">
+		select bno , title , userid , regdate
+		from tbl_userboard
+		where bno >0 
+		order by bno asc 
+		limit #{pageStart} , #{perPageNum}
+	</select> 
+	
 </mapper>
 		
 

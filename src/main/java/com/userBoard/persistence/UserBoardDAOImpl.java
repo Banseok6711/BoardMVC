@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.userBoard.domain.UserBoardVO;
+import com.userBoard.paging.Criteria;
 
 @Repository
 public class UserBoardDAOImpl implements UserBoardDAO{
@@ -61,5 +62,26 @@ public class UserBoardDAOImpl implements UserBoardDAO{
 		
 		return session.selectList(nameSpace+".list");
 	}
+
+	@Override
+	public List<UserBoardVO> listPage(int page) throws Exception {
+		
+		if(page <=0){
+			page = 1;
+		}
+		
+		page = (page-1)*10;
+		return session.selectList(nameSpace+".listPage" , page);
+	}
+
+	@Override
+	public List<UserBoardVO> listCriteria(Criteria cri) throws Exception {
+		
+		
+		
+		return session.selectList(nameSpace+".listCriteria" , cri);
+	}
+	
+	
 
 }

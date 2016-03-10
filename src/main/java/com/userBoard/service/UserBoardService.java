@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.userBoard.domain.UserBoardVO;
+import com.userBoard.paging.Criteria;
 import com.userBoard.persistence.UserBoardDAO;
 
 @Service
@@ -35,6 +36,11 @@ public class UserBoardService {
 	public List<UserBoardVO> list()throws Exception{
 				
 		return dao.list();		
+	}
+	
+	public List<UserBoardVO> listCriteria(Criteria cri)throws Exception{
+		
+		return dao.listCriteria(cri);
 	}
 	
 	

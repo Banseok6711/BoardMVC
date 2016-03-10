@@ -3,6 +3,7 @@ package com.userBoard.persistence;
 import java.util.List;
 
 import com.userBoard.domain.UserBoardVO;
+import com.userBoard.paging.Criteria;
 
 public interface UserBoardDAO {
 	
@@ -15,5 +16,9 @@ public interface UserBoardDAO {
 	public void delete(int bno)throws Exception;
 	
 	public List<UserBoardVO> list()throws Exception;
+	
+	public List<UserBoardVO> listPage(int page)throws Exception;
+	
+	public List<UserBoardVO> listCriteria(Criteria cri)throws Exception;
 
 }

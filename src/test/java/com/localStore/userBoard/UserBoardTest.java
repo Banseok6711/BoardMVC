@@ -1,5 +1,7 @@
 package com.localStore.userBoard;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -10,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.userBoard.domain.UserBoardVO;
+import com.userBoard.paging.Criteria;
 import com.userBoard.persistence.UserBoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -41,6 +44,34 @@ public class UserBoardTest {
 		
 		logger.info(vo.toString());
 		
+	}
+	
+	@Test
+	public void testListPage()throws Exception{
+		
+		int page = 1 ;
+		
+		List<UserBoardVO> list = dao.listPage(page);
+		
+		for(UserBoardVO boardVO  : list){
+			logger.info(boardVO.getBno()+ " : "+ boardVO.getTitle());
+		}
+		
+	}
+	
+	@Test
+	public void testListCriteria()throws Exception{
+		
+		Criteria cri = new Criteria();
+		
+		cri.setPage(3);
+		cri.setPerPageNum(20);
+		
+		List<UserBoardVO> list = dao.listCriteria(cri);
+		
+		for(UserBoardVO boardVO : list){
+			logger.info(boardVO.getBno()+ ":" + boardVO.getTitle());
+		}
 	}
 
 }

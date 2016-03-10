@@ -58,7 +58,10 @@
 								<hr>
 								
 								<button type="submit" class="btn btn-lg btn-success">OK</button>	
-								<button type="button" class="btn btn-lg btn-danger">Cancle</button>					
+								<button type="button" class="btn btn-lg btn-danger">Cancle</button>	
+								
+							
+											
 						</form>
 					</div>
 				</div> 
