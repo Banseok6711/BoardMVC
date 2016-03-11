@@ -13,7 +13,7 @@
 		<a href="#" class="list-group-item">약국</a>
 		<a href="#" class="list-group-item">헬스</a> 
 		<a href="#"	class="list-group-item">약국</a> 
-		<a href="/userBoard/boardList"	class="list-group-item">게시판</a> 
+		<a href="/userBoard/listPage"	class="list-group-item">게시판</a> 
 		<a href="/userBoard/write"	class="list-group-item">게시판 write</a> 
 		<a href="#" class="list-group-item">QnA</a>		
 	</div>

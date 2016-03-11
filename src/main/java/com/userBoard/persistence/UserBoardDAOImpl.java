@@ -81,6 +81,12 @@ public class UserBoardDAOImpl implements UserBoardDAO{
 		
 		return session.selectList(nameSpace+".listCriteria" , cri);
 	}
+
+	@Override
+	public int countPaging(Criteria cri) throws Exception {
+		
+		return session.selectOne(nameSpace+".countPaging");
+	}
 	
 	
 

@@ -43,6 +43,11 @@ public class UserBoardService {
 		return dao.listCriteria(cri);
 	}
 	
+	public int listCountCriteria(Criteria cri)throws Exception{
+		
+		return dao.countPaging(cri);
+	}
+	
 	
 	
 

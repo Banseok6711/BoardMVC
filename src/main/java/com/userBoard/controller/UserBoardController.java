@@ -17,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.user.domain.UserVO;
 import com.user.service.UserService;
@@ -77,11 +79,12 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping(value="/read" , method=RequestMethod.GET)
-	public String read(Model model , String bno , HttpSession session)throws Exception{
+	//@RequestParam , @ModelAttribute는 생략가능( nomarl data type  (int ,String..) ->RequstParam , specific object which is made(Criteria,Car,User..)  ->ModelAttribute
+	public String read(@ModelAttribute Model model ,@RequestParam("bno") int bno , HttpSession session)throws Exception{
 		
-		int bnoNumber = Integer.parseInt(bno);
+//		int bnoNumber = Integer.parseInt(bno);
 		
-		UserBoardVO boardVO= userBoardService.read(bnoNumber);
+		UserBoardVO boardVO= userBoardService.read(bno);
 		
 		UserVO userVO = userService.read(boardVO.getUserid());
 				
@@ -104,14 +107,16 @@ public class UserBoardController {
 	
 	
 	@RequestMapping(value="/userBoardDelete" , method=RequestMethod.GET)
-	public String delete(String bno)throws Exception{
+	public String delete(String bno , Criteria cri , RedirectAttributes rttr)throws Exception{
 		
 		int bnoNumber = Integer.parseInt(bno);
 		
 		userBoardService.delete(bnoNumber);
 		
+		rttr.addAttribute("page",cri.getPage());
+		rttr.addAttribute("perPageNum",cri.getPerPageNum());
 		
-		return "redirect:/userBoard/boardList";
+		return "redirect:/userBoard/listPage";
 	}
 	
 	@RequestMapping(value="/userBoardEdit" , method=RequestMethod.POST)
@@ -131,7 +136,7 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping(value="/userBoardEditPro" , method=RequestMethod.POST)
-	public String editPro(Model model , UserBoardVO boardVO)throws Exception{
+	public String editPro(Model model , UserBoardVO boardVO ,Criteria cri, RedirectAttributes rttr)throws Exception{
 		
 //		int bnoNum = Integer.parseInt(bno);
 		
@@ -139,7 +144,12 @@ public class UserBoardController {
 		
 		userBoardService.edit(boardVO);
 		
-		return "redirect:/userBoard/boardList";
+		rttr.addAttribute("page",cri.getPage());
+		rttr.addAttribute("perPageNum",cri.getPerPageNum());
+		rttr.addFlashAttribute("msg", "SUCESS");
+		
+		
+		return "redirect:/userBoard/listPage";
 	}
 	
 	@RequestMapping(value="/listCri" , method=RequestMethod.GET)
@@ -160,19 +170,52 @@ public class UserBoardController {
 		model.addAttribute("boardList",userBoardService.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(131);
+		pageMaker.setTotalCount(userBoardService.listCountCriteria(cri));
+//		pageMaker.setTotalCount(131);
+		
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
 		return "userBoard/userBoardListPage";
 		
 	}
+		
+
+	@RequestMapping(value="/readPage" , method= RequestMethod.GET)
+	public String read(@RequestParam("bno") int bno , @ModelAttribute("cri") Criteria cri ,
+					Model model)throws Exception{
+		
+		
+		UserBoardVO boardVO= userBoardService.read(bno);
+		
+		UserVO userVO = userService.read(boardVO.getUserid());
+				
+		
+		model.addAttribute("boardVO", boardVO);
+		model.addAttribute("userVO", userVO);
+		
+		//@ModelAttirbute로 받은 객체는 model에 안넣어줘도 자동으로 model에 포함 되는것 같음 .
+//		model.addAttribute("cri", cri);
+		
+		return "userBoard/userBoardInfoPage";
+	}
 	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/userBoardEditPage" , method=RequestMethod.POST)
+	public String editPage(UserBoardVO boardVO , Model model , String username ,
+							@ModelAttribute("cri") Criteria cri)throws Exception{
+		
+		
+		System.out.println("boardVO:"+boardVO.toString());
+		
+		UserBoardVO vo= userBoardService.read(boardVO.getBno());
+		
+		boardVO.setUserid(vo.getUserid());
+		
+		model.addAttribute("boardVO", boardVO);
+		model.addAttribute("username", username);
+		
+		return "userBoard/userBoardEditPage";
+	}
 	
 	
 

@@ -51,6 +51,16 @@
 		limit #{pageStart} , #{perPageNum}
 	</select> 
 	
+	
+	<select id="countPaging" resultType="int">
+		select
+			count(bno)
+		from
+			tbl_userboard
+		where bno > 0	
+	
+	</select>
+	
 </mapper>
 		
 

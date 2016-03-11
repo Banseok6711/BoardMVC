@@ -20,5 +20,7 @@ public interface UserBoardDAO {
 	public List<UserBoardVO> listPage(int page)throws Exception;
 	
 	public List<UserBoardVO> listCriteria(Criteria cri)throws Exception;
+	
+	public int countPaging(Criteria cri)throws Exception;
 
 }
