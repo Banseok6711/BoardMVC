@@ -47,7 +47,7 @@
 						</div>
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
-								<input type="text" class="form-control" placeholder="input Title" name="title">					
+								<input type="text" class="form-control" placeholder="input Title" name="title" id="title">					
 							</div>
 						</div>											
 					</div>				
@@ -62,11 +62,12 @@
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
 								<c:if test="${userVO ne null }">
-									<input type="text" class="form-control" placeholder="${userVO.username}" readonly="readonly" >
+									<input type="text" class="form-control" placeholder="${userVO.username}" readonly="readonly" id="writer" >
 								</c:if>
-								<c:if test="${userVO eq null }">
-									<input type="text" class="form-control" placeholder="input your name">
-								</c:if>
+								
+								<%-- <c:if test="${userVO eq null }">
+									<input type="text" class="form-control" placeholder="input your name" id="writer" name="writer">
+								</c:if> --%>
 													
 							</div>
 						</div>											
@@ -81,7 +82,7 @@
 						</div>
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
-								<textarea class="form-control" rows="10" name="content"></textarea>
+								<textarea class="form-control" rows="10" name="content" id="content"></textarea>
 							</div>
 						</div>											
 					</div>				
@@ -109,7 +110,7 @@
 						</div>
 						<div class="col-xs-6 col-sm-9">				
 							<div> 
-								<button type="submit" class="btn btn-lg btn-success">Write</button>	
+								<button type="button" class="btn btn-lg btn-success" id="btnWrite">Write</button>	
 								<button type="button" class="btn btn-lg btn-danger">Cancle</button>									
 							</div>							
 						</div>											
@@ -143,6 +144,25 @@
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script src="/resources/dist/js/offcanvas.js"></script>
+	
+	<script type="text/javascript">
+		$("#btnWrite").click(function(){
+			
+			if($("#title").val() == ""){
+				alert( "타이틀을 입력해주세요");	
+			}else if($("#content").val() == ""){
+				alert( "내용을 입력해주세요");	
+			}else{
+				$("form").submit();
+			}
+			
+					
+			
+		
+			
+		});
+	
+	</script>
 
 
 </body>

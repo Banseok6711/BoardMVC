@@ -52,7 +52,7 @@
 								<p class="text-info">전화번호</p><input type="text"  name="phone" class="form-control" value="${userVO.phone}" readonly="readonly">
 								
 								<button type="submit" class="btn btn-lg btn-success">수정</button>	
-								<button type="button" class="btn btn-lg btn-danger">취소</button>					
+												
 						</form>
 					</div>
 				</div> 

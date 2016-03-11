@@ -41,7 +41,7 @@ public class UserBoardController {
 	private UserBoardService userBoardService;
 	
 	@RequestMapping(value="/write" ,method=RequestMethod.GET)
-	public String write(Model model , UserBoardVO vo , HttpSession session)throws Exception{
+	public String write(Model model ,  HttpSession session)throws Exception{
 		
 		UserVO user=(UserVO)session.getAttribute("login");
 		
@@ -60,11 +60,18 @@ public class UserBoardController {
 	}
 	
 	@RequestMapping(value="/write" , method=RequestMethod.POST)
-	public String write(Model model , HttpSession session, UserBoardVO boardVO )throws Exception{
+	public String write(Model model , HttpSession session, UserBoardVO boardVO,String writer )throws Exception{
 		
 		UserVO vo =(UserVO)session.getAttribute("login");
 		
-		boardVO.setUserid(vo.getUserid());
+		
+		//not login -> set Writer where userid = writer
+		if(vo == null){
+			boardVO.setUserid(writer);
+		}else{
+			boardVO.setUserid(vo.getUserid());
+		}
+		
 		
 		userBoardService.write(boardVO);		
 		
@@ -75,7 +82,7 @@ public class UserBoardController {
 		model.addAttribute("boardVO", boardVO);
 		model.addAttribute("userVO", userVO);
 		
-		return "userBoard/userBoardInfo";
+		return "userBoard/userBoardInfoPage";
 	}
 	
 	@RequestMapping(value="/read" , method=RequestMethod.GET)

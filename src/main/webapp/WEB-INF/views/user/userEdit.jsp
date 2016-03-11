@@ -121,7 +121,14 @@
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 		<script src="/resources/dist/js/offcanvas.js"></script>
+		
 		<script>
+			$(".btn-danger").click(function(){
+					$("form").attr("action" , "/user/userinfo")
+					.attr("method" ,"get")
+					.submit();
+			});
+		
 			
 		</script>
 </body>

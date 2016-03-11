@@ -37,6 +37,11 @@
 			<script>
 				alert("ID,PW error!");
 			</script> 
+		</c:when>
+		<c:when test="${msg eq 'loginCheck' }">
+			<script>
+				alert("Please Login !!");
+			</script> 
 		</c:when>	
 	</c:choose>
 	<%-- 
