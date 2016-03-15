@@ -25,6 +25,7 @@ import com.user.service.UserService;
 import com.userBoard.domain.UserBoardVO;
 import com.userBoard.paging.Criteria;
 import com.userBoard.paging.PageMaker;
+import com.userBoard.paging.SearchCriteria;
 import com.userBoard.service.UserBoardService;
 
 
@@ -169,16 +170,22 @@ public class UserBoardController {
 		return "userBoard/userBoardListCri";
 	}
 	
-	@RequestMapping(value="/listPage" , method=RequestMethod.GET)
-	public String listPage(Criteria cri , Model model)throws Exception{
+	@RequestMapping(value="/listPage" )
+	public String listPage(SearchCriteria cri , Model model)throws Exception{
 		
 		logger.info(cri.toString());
 		
-		model.addAttribute("boardList",userBoardService.listCriteria(cri));
+//		model.addAttribute("boardList",userBoardService.listCriteria(cri));
+		model.addAttribute("boardList", userBoardService.listSearchCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(userBoardService.listCountCriteria(cri));
-//		pageMaker.setTotalCount(131);
+//		pageMaker.setTotalCount(userBoardService.listCountCriteria(cri));
+		pageMaker.setTotalCount(userBoardService.listSearchCount(cri));
+		
+
+		
+		System.out.println("searchCriteria.toString() : "+cri.toString());
+		
 		
 		
 		model.addAttribute("pageMaker", pageMaker);
@@ -223,6 +230,9 @@ public class UserBoardController {
 		
 		return "userBoard/userBoardEditPage";
 	}
+	
+	
+	
 	
 	
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.userBoard.domain.UserBoardVO;
 import com.userBoard.paging.Criteria;
+import com.userBoard.paging.SearchCriteria;
 
 @Repository
 public class UserBoardDAOImpl implements UserBoardDAO{
@@ -86,6 +87,17 @@ public class UserBoardDAOImpl implements UserBoardDAO{
 	public int countPaging(Criteria cri) throws Exception {
 		
 		return session.selectOne(nameSpace+".countPaging");
+	}
+
+	@Override
+	public List<UserBoardVO> listSearch(SearchCriteria cri) throws Exception {
+				
+		return session.selectList(nameSpace+".listSearch" , cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		return session.selectOne(nameSpace+".listSearchCount" , cri);
 	}
 	
 	

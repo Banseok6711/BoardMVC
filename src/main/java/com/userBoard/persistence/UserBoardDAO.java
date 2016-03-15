@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.userBoard.domain.UserBoardVO;
 import com.userBoard.paging.Criteria;
+import com.userBoard.paging.SearchCriteria;
 
 public interface UserBoardDAO {
 	
@@ -22,5 +23,9 @@ public interface UserBoardDAO {
 	public List<UserBoardVO> listCriteria(Criteria cri)throws Exception;
 	
 	public int countPaging(Criteria cri)throws Exception;
+	
+	public List<UserBoardVO> listSearch(SearchCriteria cri)throws Exception;
+	
+	public int listSearchCount(SearchCriteria cri)throws Exception;
 
 }

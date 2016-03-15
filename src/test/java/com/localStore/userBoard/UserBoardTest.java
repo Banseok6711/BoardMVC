@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.userBoard.domain.UserBoardVO;
 import com.userBoard.paging.Criteria;
+import com.userBoard.paging.SearchCriteria;
 import com.userBoard.persistence.UserBoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -89,5 +90,28 @@ public class UserBoardTest {
 		logger.info("/userBoard/listPage?bno=12&perPageNum=20");
 		logger.info(uriComponents.toString());
 	}
+	
+	@Test
+	public void testDynamic1() throws Exception{
+		
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("타이틀");
+		cri.setSearchType("t");
+		
+		logger.info("===================");
+		
+		List<UserBoardVO> list =dao.listSearch(cri);
+		
+		for(UserBoardVO boardVo :list){
+			logger.info(boardVo.getBno()+" : "+ boardVo.getTitle());
+		}
+		
+		logger.info("===================");
+		
+		logger.info("count:"+dao.listSearchCount(cri));
+		
+	}
+	
 
 }

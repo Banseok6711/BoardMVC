@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.userBoard.domain.UserBoardVO;
 import com.userBoard.paging.Criteria;
+import com.userBoard.paging.SearchCriteria;
 import com.userBoard.persistence.UserBoardDAO;
 
 @Service
@@ -46,6 +47,17 @@ public class UserBoardService {
 	public int listCountCriteria(Criteria cri)throws Exception{
 		
 		return dao.countPaging(cri);
+	}
+	
+	public List<UserBoardVO> listSearchCriteria(SearchCriteria cri)throws Exception{
+		
+		return dao.listSearch(cri);
+	}
+	
+	
+	public int listSearchCount(SearchCriteria cri)throws Exception{
+		
+		return dao.listSearchCount(cri);
 	}
 	
 	
