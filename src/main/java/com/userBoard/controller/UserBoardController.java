@@ -170,10 +170,15 @@ public class UserBoardController {
 		return "userBoard/userBoardListCri";
 	}
 	
-	@RequestMapping(value="/listPage" )
-	public String listPage(SearchCriteria cri , Model model)throws Exception{
+	@RequestMapping(value="/listPage" , method=RequestMethod.GET)
+	public String listPage(@ModelAttribute SearchCriteria cri , Model model)throws Exception{
+				
+		System.out.println("cri.getKeyword: "+cri.getKeyword()); 
+		System.out.println("cri.getS: "+cri.getSearchType());
 		
 		logger.info(cri.toString());
+		
+		
 		
 //		model.addAttribute("boardList",userBoardService.listCriteria(cri));
 		model.addAttribute("boardList", userBoardService.listSearchCriteria(cri));
